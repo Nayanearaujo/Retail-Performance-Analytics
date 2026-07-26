@@ -112,7 +112,8 @@ Retail-Performance-Analytics/
 │   └── theme/                # UI/UX Style Guide do relatório
 ```
 ## Roteiro de Análise (Notebook Roadmap)
-Ordem	Notebook	Objetivo
+|Ordem dos Notebooks | Objetivo |
+|---|---|
 1	01_Data_Understanding.ipynb	Diagnóstico de integridade, cancelamentos e cobertura da fonte.
 2	02_Data_Cleaning.ipynb	Aplicação das regras de negócio para saneamento da base.
 3	03_business_analysis.ipynb	Extração de insights de vendas, clientes, produtos e tempo.
