@@ -66,21 +66,26 @@ flowchart TD
     D --> E[Modelagem Star Schema]
     E --> F[Dashboard Executivo Final]
 ```
-
 ## Higienização e Integridade de Dados
-Estágio	Volume de Linhas	Delta
-Base Original (Raw)	541,909	—
-Base Higienizada (Final)	525,460	−16,449
+
+| Estágio | Volume de Linhas | Delta |
+|---|---:|---:|
+| Base Original (Raw) | 541,909 | — |
+| Base Higienizada (Final) | 525,460 | −16,449 |
+
 A régua de higienização foi intencionalmente conservadora para garantir o rigor das métricas:
-Registros sem descrição: Excluídos por serem considerados ruídos operacionais de valor zero.
-Duplicatas: Removidas para evitar inflar o Gross Merchandise Volume (GMV).
-Ajustes de Estoque: Quantidades negativas ou nulas foram removidas da visão de vendas concluídas.
-Estornos: Preços negativos foram excluídos como ajustes contábeis.
-Clientes Anônimos: Permanecem no faturamento global, mas são excluídos das métricas de comportamento de base.
-Insights Críticos de Interpretação
-Efeito Sazonal (Dez/2011): A base encerra em 09/12/2011. Dezembro é um mês parcial e não deve ser lido como queda de faturamento ou perda de tração.
-Market Share UK: O Reino Unido detém aproximadamente 84.6% do share. Analisamos os mercados internacionais separadamente para evitar distorções de escala.
-Receita Operacional: Taxas de frete (POSTAGE) e ajustes manuais geram receita, mas não são produtos. Foram isolados para não poluir o ranking de performance de mercadorias.
+
+- **Registros sem descrição:** Excluídos por serem considerados ruídos operacionais de valor zero.
+- **Duplicatas:** Removidas para evitar inflar o *Gross Merchandise Volume* (GMV).
+- **Ajustes de Estoque:** Quantidades negativas ou nulas foram removidas da visão de vendas concluídas.
+- **Estornos:** Preços negativos foram excluídos como ajustes contábeis.
+- **Clientes Anônimos:** Permanecem no faturamento global, mas são excluídos das métricas de comportamento de base.
+
+## Insights Críticos de Interpretação
+
+- **Efeito Sazonal (Dez/2011):** A base encerra em 09/12/2011. Dezembro é um mês parcial e não deve ser lido como queda de faturamento ou perda de tração.
+- **Market Share UK:** O Reino Unido detém aproximadamente 84.6% do share. Analisamos os mercados internacionais separadamente para evitar distorções de escala.
+- **Receita Operacional:** Taxas de frete (POSTAGE) e ajustes manuais geram receita, mas não são produtos. Foram isolados para não poluir o ranking de performance de mercadorias.
 
 ![Validated monthly sales trend with the partial December 2011 period disclosed](images/monthly_sales_validated.png)
 
