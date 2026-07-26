@@ -98,9 +98,8 @@ Customer & Product Analysis: Ranking de Pareto, giro de mercadorias e comportame
 Data Quality & Definitions: Transparência técnica, reconciliação de base e dicionário de KPIs.
 
 ## Estrutura do Repositório
-
-```mermaid
-    Retail-Performance-Analytics/
+```text
+Retail-Performance-Analytics/
 ├── data/
 │   ├── raw/                  # Dados brutos originais (UCI)
 │   └── processed/            # Base higienizada gerada localmente
