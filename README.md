@@ -96,8 +96,10 @@ O dashboard foi estruturado em três camadas de análise:
 Executive Overview: Faturamento, volumetria, Ticket Médio e mix de mercado.
 Customer & Product Analysis: Ranking de Pareto, giro de mercadorias e comportamento de compra.
 Data Quality & Definitions: Transparência técnica, reconciliação de base e dicionário de KPIs.
-Estrutura do Repositório
 
+## Estrutura do Repositório
+
+```mermaid
     Retail-Performance-Analytics/
 ├── data/
 │   ├── raw/                  # Dados brutos originais (UCI)
@@ -109,7 +111,7 @@ Estrutura do Repositório
 │   ├── dax/                  # Repositório de medidas versionadas
 │   ├── project/              # Arquivo PBIP (Power BI Project) completo
 │   └── theme/                # UI/UX Style Guide do relatório
-
+```
 ## Roteiro de Análise (Notebook Roadmap)
 Ordem	Notebook	Objetivo
 1	01_Data_Understanding.ipynb	Diagnóstico de integridade, cancelamentos e cobertura da fonte.
