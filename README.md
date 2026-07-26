@@ -136,7 +136,7 @@ python -m pytest -q
 Python · pandas · matplotlib · seaborn · SQLite · SQL · Power BI · Power Query · DAX · GitHub Actions
 
 📖 Fonte e Licença (Source and License)
-Dataset: UCI Online Retail, Daqing Chen, licenciado sob CC BY 4.0.
-Código e Documentação: MIT License.
+Dataset: [UCI Online Retail](https://doi.org/10.24432/C5BW33), Daqing Chen, licensed under CC BY 4.0.
+Código e Documentação: [MIT License](LICENSE).
 
-Desenvolvido por Nayane Araujo
+Desenvolvido por `Nayane Araujo`
