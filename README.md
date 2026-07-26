@@ -1,8 +1,8 @@
 # Retail Performance Analytics: Da Transação ao Insight Executivo
 
-**Um projeto documentado de Business Intelligence que transforma transações brutas de varejo em uma visão de performance executiva confiável e auditada.**
+**Um framework completo de Business Intelligence que transforma dados transacionais brutos em uma visão de performance estratégica, auditada e pronta para a tomada de decisão.**
 
-Este projeto analisa o dataset *UCI Online Retail* utilizando **Python, SQL e Power BI**. O trabalho abrange desde a auditoria da fonte, limpeza orientada a regras de negócio, reconciliação de KPIs entre linguagens, análise de comportamento de clientes e produtos, até a modelagem dimensional e design de dashboard executivo.
+Este projeto analisa o dataset *UCI Online Retail* utilizando um stack de **Python, SQL e Power BI**. O escopo cobre desde a auditoria da base (*raw data*), higienização orientada a regras de negócio, reconciliação de KPIs entre sistemas, análise de LTV e Mix de Produtos, até a modelagem dimensional e o design de dashboards executivos.
 
 ---
 
@@ -11,59 +11,116 @@ Este projeto analisa o dataset *UCI Online Retail* utilizando **Python, SQL e Po
 ---
 
 ## 🛠️ Tech Stack e Habilidades
-Este repositório demonstra competências de **Analytics Engineering** e **Business Intelligence** de ponta a ponta:
+Este repositório é um case de **Analytics Engineering** focado na "Fonte Única da Verdade" (*Single Source of Truth*):
 
-- **Python (Pandas, Matplotlib, Seaborn):** Processamento de dados (ETL), limpeza técnica orientada a regras de negócio e análise exploratória (EDA).
-- **SQL (SQLite):** Reconciliação de métricas, agregações complexas e validação da "Fonte Única da Verdade" (Single Source of Truth).
-- **Power BI (DAX, Star Schema, PBIP):** Modelagem dimensional avançada, cálculos de inteligência temporal e design de dashboard focado em UX executiva.
-- **Engenharia Analítica:** Documentação de modelos de dados, dicionário de métricas e scripts de validação automatizados.
+- **Python (Pandas, Matplotlib, Seaborn):** Engine de ETL, higienização de base avançada e análise exploratória (EDA).
+- **SQL (SQLite):** Reconciliação de métricas de faturamento e validação de lógica de banco de dados.
+- **Power BI (DAX, Star Schema, PBIP):** Modelagem dimensional, cálculos de inteligência de tempo e UX design focado em executivos.
+- **Data Governance:** Documentação de linhagem de dados, dicionário de métricas e scripts de auditoria.
 
-> O projeto Power BI (formato PBIP) está incluído no repositório. Cada KPI publicado foi reconciliado com o dataset processado para garantir a integridade total dos dados.
+> O projeto Power BI (formato PBIP) está disponível no repositório. Cada KPI apresentado foi reconciliado com a base higienizada para garantir 100% de integridade dos dados.
 
-## Status do Projeto
+## Status do Projeto (Milestones)
 
-| Workstream (Frente de Trabalho) | Status |
+| Frente de Trabalho | Status |
 |---|---|
-| Entendimento dos dados (Data understanding) | Completo |
-| Limpeza e validação de dados | Completo |
-| Análise de negócio com Python | Completo |
-| Reconciliação via SQL | Completo |
-| Especificação de KPI e modelo semântico | Completo |
-| Visão geral executiva no Power BI | Completo |
-| Projeto PBIP com controle de versão | Completo |
-| Páginas de detalhe: Cliente, Produto e Qualidade | Especificado para a próxima iteração |
-| Refresh final do Power BI Desktop | Completo |
+| Mapeamento e Diagnóstico de Dados (Understanding) | Completo |
+| Higienização e Saneamento da Base | Completo |
+| Business Analysis (Python) | Completo |
+| Reconciliação e Auditoria de Métricas (SQL) | Completo |
+| Modelagem Semântica e Especificação de KPIs | Completo |
+| Dashboard Executivo (Overview) | Completo |
+| Versionamento de Projeto PBIP | Completo |
+| Deep Dive: Clientes, Produtos e Qualidade | Próxima Iteração |
+| Homologação Final (Power BI Desktop) | Completo |
 
-## Resultados Executivos
+## Raio-X de Performance (Resultados Executivos)
+A base analítica reflete as vendas reais após o saneamento de dados (remoção de descrições ausentes, duplicatas, cancelamentos e ajustes contábeis).
 
-O dataset analítico contém vendas de varejo concluídas após a remoção de descrições ausentes, registros duplicados, quantidades não positivas e preços unitários negativos.
-
-| KPI | Resultado Verificado | Definição |
+| KPI | Resultado Auditado | Conceito |
 |---|---:|---|
-| **Sales (Vendas)** | **£10,642,110.80** | Soma de `Quantity × UnitPrice` |
-| **Orders (Pedidos)** | **20,134** | Contagem distinta de números de faturas concluídas |
-| **Identified customers** | **4,339** | Contagem distinta de IDs de clientes (não nulos) |
-| **Products sold** | **3,925** | Stock codes distintos em vendas concluídas |
-| **Average order value (AOV)** | **£528.56** | Receita total dividida pelo total de pedidos |
-| **Countries (Países)** | **38** | Países distintos presentes nas transações |
+| **Faturamento (Sales)** | **£10,642,110.80** | Receita Bruta (Soma de `Quantity × UnitPrice`) |
+| **Volume de Pedidos** | **20,134** | Total de faturas únicas finalizadas |
+| **Base de Clientes Ativos** | **4,339** | Clientes identificados (excluindo anônimos) |
+| **Mix de Produtos** | **3,925** | SKUs distintos com giro de estoque confirmado |
+| **Ticket Médio (AOV)** | **£528.56** | Faturamento total dividido pelo volume de pedidos |
+| **Presença de Mercado** | **38** | Países com transações ativas |
 
-Estas métricas utilizam uma população limpa consistente de **525.460 linhas de transação**. As contagens da fonte original (541.909 linhas) são mantidas apenas para análise de qualidade e não são misturadas aos KPIs de vendas.
+*Nota: As métricas utilizam uma base higienizada de **525.460 linhas**. O volume original da fonte (541.909) é mantido apenas para fins de auditoria de qualidade e não é misturado aos KPIs de performance.*
 
-## Perguntas de Negócio Respondidas
+## Dores de Negócio & Insights
+1. **Performance Global:** Qual o faturamento real e volume de tração do ecossistema?
+2. **Tendência & Sazonalidade:** Como o faturamento e o Ticket Médio (AOV) oscilam no funil temporal?
+3. **Market Share Geográfico:** Quais praças dominam a receita e qual o peso do mercado externo?
+4. **Curva de Clientes:** Quais perfis de clientes geram o maior valor para o negócio?
+5. **Core Business:** Quais produtos físicos lideram as vendas após a exclusão de taxas de serviço?
+6. **Data Health:** Quais limitações da fonte original podem enviesar a leitura executiva?
 
-1. Qual é a performance geral do negócio em faturamento e volume?
-2. Como as vendas e o valor médio do pedido (AOV) mudam ao longo do tempo?
-3. Quais mercados (países) mais contribuem para a receita?
-4. Quais clientes geram o maior valor para a empresa?
-5. Quais produtos físicos lideram as vendas após a separação de taxas operacionais?
-6. Quais limitações da fonte de dados afetam a interpretação dos resultados?
-
-## Fluxo Analítico (Workflow)
+## Pipeline de Inteligência (Workflow)
 
 ```mermaid
 flowchart TD
-    A[UCI source workbook] --> B[Auditoria de Fonte e Qualidade]
-    B --> C[Regras de Limpeza (Business-led)]
-    C --> D[Reconciliação Python e SQL]
-    D --> E[Modelo Semântico Power BI]
-    E --> F[Relatório Executivo e Validação]
+    A[Dataset Original - UCI] --> B[Auditoria de Qualidade e Gaps]
+    B --> C["Higienização de Dados (Business Rules)"]
+    C --> D[Reconciliação Python vs SQL]
+    D --> E[Modelagem Star Schema]
+    E --> F[Dashboard Executivo Final]
+
+    Higienização e Integridade de Dados
+Estágio	Volume de Linhas	Delta
+Base Original (Raw)	541,909	—
+Base Higienizada (Final)	525,460	−16,449
+A régua de higienização foi intencionalmente conservadora para garantir o rigor das métricas:
+Registros sem descrição: Excluídos por serem considerados ruídos operacionais de valor zero.
+Duplicatas: Removidas para evitar inflar o Gross Merchandise Volume (GMV).
+Ajustes de Estoque: Quantidades negativas ou nulas foram removidas da visão de vendas concluídas.
+Estornos: Preços negativos foram excluídos como ajustes contábeis.
+Clientes Anônimos: Permanecem no faturamento global, mas são excluídos das métricas de comportamento de base.
+Confira as definições completas em Qualidade e Escopo e Dicionário de Métricas.
+Insights Críticos de Interpretação
+Efeito Sazonal (Dez/2011): A base encerra em 09/12/2011. Dezembro é um mês parcial e não deve ser lido como queda de faturamento ou perda de tração.
+Market Share UK: O Reino Unido detém aproximadamente 84.6% do share. Analisamos os mercados internacionais separadamente em visões específicas para evitar distorções de escala.
+Receita Operacional: Taxas de frete (POSTAGE) e ajustes manuais geram receita, mas não são produtos. Foram isolados para não poluir o ranking de performance de mercadorias.
+![alt text](images/monthly_sales_validated.png)
+![alt text](images/international_market_sales.png)
+Arquitetura do Relatório Power BI
+O dashboard foi estruturado em três camadas de análise:
+Executive Overview: Faturamento, volumetria, Ticket Médio e mix de mercado.
+Customer & Product Analysis: Ranking de clientes, giro de mercadorias e frequência de compra.
+Data Quality & Definitions: Transparência técnica, reconciliação de base e dicionário de KPIs.
+As regras de design e UX estão em Especificações do Dashboard e a modelagem em Data Model.
+Estrutura do Repositório
+code
+Text
+Retail-Performance-Analytics/
+├── data/
+│   ├── raw/                  # Dados brutos originais (UCI)
+│   └── processed/            # Base higienizada gerada localmente
+├── docs/                     # Modelo de dados e especificações técnicas
+├── images/                   # Evidências gráficas e assets do README
+├── notebooks/                # Documentação do ETL, Análise e Reconciliação
+├── powerbi/
+│   ├── dax/                  # Repositório de medidas versionadas
+│   ├── project/              # Arquivo PBIP (Power BI Project) completo
+│   └── theme/                # UI/UX Style Guide do relatório
+Roteiro de Análise (Notebook Roadmap)
+Ordem	Notebook	Objetivo
+1	01_Data_Understanding.ipynb	Diagnóstico de integridade, cancelamentos e cobertura da fonte.
+2	02_Data_Cleaning.ipynb	Aplicação das regras de negócio para saneamento da base.
+3	03_business_analysis.ipynb	Extração de insights de vendas, clientes, produtos e tempo.
+4	04_SQL_Analysis.ipynb	Auditoria Técnica: Reconciliação dos KPIs utilizando SQL.
+Como Reproduzir o Projeto
+A fonte de dados é o UCI Online Retail dataset, licenciado sob CC BY 4.0.
+Instale as dependências:
+code
+Bash
+python -m pip install -r requirements.txt
+jupyter lab
+Execute os notebooks na ordem numérica.
+Para validar o projeto e gerar os ativos de documentação:
+code
+Bash
+python scripts/validate_retail_metrics.py
+python scripts/generate_documentation_assets.py
+python -m pytest -q
+Desenvolvido por Nayane Araujo
