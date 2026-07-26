@@ -114,10 +114,10 @@ Retail-Performance-Analytics/
 ## Roteiro de Análise (Notebook Roadmap)
 |Ordem dos Notebooks | Objetivo |
 |---|---|
-1	01_Data_Understanding.ipynb	Diagnóstico de integridade, cancelamentos e cobertura da fonte.
-2	02_Data_Cleaning.ipynb	Aplicação das regras de negócio para saneamento da base.
-3	03_business_analysis.ipynb	Extração de insights de vendas, clientes, produtos e tempo.
-4	04_SQL_Analysis.ipynb	Auditoria Técnica: Reconciliação dos KPIs utilizando SQL.
+| `01_Data_Understanding.ipynb` | Diagnóstico de integridade, cancelamentos e cobertura da fonte.
+| `02_Data_Cleaning.ipynb` | Aplicação das regras de negócio para saneamento da base.
+|` 03_business_analysis.ipynb` | Extração de insights de vendas, clientes, produtos e tempo.
+| `04_SQL_Analysis.ipynb` | Auditoria Técnica: Reconciliação dos KPIs utilizando SQL.
 
 ## Como Reproduzir o Projeto
 Instale as dependências:
@@ -125,7 +125,7 @@ Instale as dependências:
 python -m pip install -r requirements.txt
 jupyter lab
 ```
-## Execute os notebooks na ordem numérica.
+### Execute os notebooks na ordem numérica.
 Para validar o projeto e gerar os ativos de documentação:
 ```bash
 python scripts/validate_retail_metrics.py
