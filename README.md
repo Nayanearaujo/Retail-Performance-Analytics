@@ -116,7 +116,7 @@ Retail-Performance-Analytics/
 |---|---|
 | `01_Data_Understanding.ipynb` | Diagnóstico de integridade, cancelamentos e cobertura da fonte.
 | `02_Data_Cleaning.ipynb` | Aplicação das regras de negócio para saneamento da base.
-|` 03_business_analysis.ipynb` | Extração de insights de vendas, clientes, produtos e tempo.
+| `03_business_analysis.ipynb` | Extração de insights de vendas, clientes, produtos e tempo.
 | `04_SQL_Analysis.ipynb` | Auditoria Técnica: Reconciliação dos KPIs utilizando SQL.
 
 ## Como Reproduzir o Projeto
@@ -138,6 +138,5 @@ Python · pandas · matplotlib · seaborn · SQLite · SQL · Power BI · Power 
 📖 Fonte e Licença (Source and License)
 Dataset: UCI Online Retail, Daqing Chen, licenciado sob CC BY 4.0.
 Código e Documentação: MIT License.
-
 
 Desenvolvido por Nayane Araujo
