@@ -65,6 +65,7 @@ flowchart TD
     C --> D[Reconciliação Python vs SQL]
     D --> E[Modelagem Star Schema]
     E --> F[Dashboard Executivo Final]
+```
 
 ## Higienização e Integridade de Dados
 Estágio	Volume de Linhas	Delta
@@ -85,10 +86,6 @@ Receita Operacional: Taxas de frete (POSTAGE) e ajustes manuais geram receita, m
 
 ![Top international markets by sales, explicitly excluding the United Kingdom](images/international_market_sales.png)
 
-![alt text](images/monthly_sales_validated.png)
-
-![alt text](images/international_market_sales.png)
-
 ## Arquitetura do Relatório Power BI
 O dashboard foi estruturado em três camadas de análise:
 Executive Overview: Faturamento, volumetria, Ticket Médio e mix de mercado.
@@ -108,12 +105,13 @@ Estrutura do Repositório
 │   ├── project/              # Arquivo PBIP (Power BI Project) completo
 │   └── theme/                # UI/UX Style Guide do relatório
 
-Roteiro de Análise (Notebook Roadmap)
+## Roteiro de Análise (Notebook Roadmap)
 Ordem	Notebook	Objetivo
 1	01_Data_Understanding.ipynb	Diagnóstico de integridade, cancelamentos e cobertura da fonte.
 2	02_Data_Cleaning.ipynb	Aplicação das regras de negócio para saneamento da base.
 3	03_business_analysis.ipynb	Extração de insights de vendas, clientes, produtos e tempo.
 4	04_SQL_Analysis.ipynb	Auditoria Técnica: Reconciliação dos KPIs utilizando SQL.
+
 Como Reproduzir o Projeto
 Instale as dependências:
 code
@@ -137,4 +135,3 @@ Código e Documentação: MIT License.
 
 
 Desenvolvido por Nayane Araujo
-
