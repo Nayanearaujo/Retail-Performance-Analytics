@@ -1,150 +1,69 @@
-# Retail Performance Analytics
+# Retail Performance Analytics: Da Transação ao Insight Executivo
 
-**A documented Business Intelligence project that turns retail transactions into a reliable executive performance view.**
+**Um projeto documentado de Business Intelligence que transforma transações brutas de varejo em uma visão de performance executiva confiável e auditada.**
 
-This project analyses the UCI Online Retail dataset with Python, SQL and Power BI. The work covers source validation, business-led cleaning, KPI reconciliation, customer and product analysis, dimensional modelling and dashboard design.
+Este projeto analisa o dataset *UCI Online Retail* utilizando **Python, SQL e Power BI**. O trabalho abrange desde a auditoria da fonte, limpeza orientada a regras de negócio, reconciliação de KPIs entre linguagens, análise de comportamento de clientes e produtos, até a modelagem dimensional e design de dashboard executivo.
 
-> The version-controlled Power BI Project is included in the repository. Design reference images are not presented as analytical output; every published KPI must reconcile to the cleaned dataset.
+---
 
-## Project status
+### 📊 [CLIQUE AQUI PARA ACESSAR O DASHBOARD INTERATIVO](https://retail-performance-pbip.ai.studio/)
 
-| Workstream | Status |
+---
+
+## 🛠️ Tech Stack e Habilidades
+Este repositório demonstra competências de **Analytics Engineering** e **Business Intelligence** de ponta a ponta:
+
+- **Python (Pandas, Matplotlib, Seaborn):** Processamento de dados (ETL), limpeza técnica orientada a regras de negócio e análise exploratória (EDA).
+- **SQL (SQLite):** Reconciliação de métricas, agregações complexas e validação da "Fonte Única da Verdade" (Single Source of Truth).
+- **Power BI (DAX, Star Schema, PBIP):** Modelagem dimensional avançada, cálculos de inteligência temporal e design de dashboard focado em UX executiva.
+- **Engenharia Analítica:** Documentação de modelos de dados, dicionário de métricas e scripts de validação automatizados.
+
+> O projeto Power BI (formato PBIP) está incluído no repositório. Cada KPI publicado foi reconciliado com o dataset processado para garantir a integridade total dos dados.
+
+## Status do Projeto
+
+| Workstream (Frente de Trabalho) | Status |
 |---|---|
-| Data understanding | Complete |
-| Data cleaning and validation | Complete |
-| Python business analysis | Complete |
-| SQL reconciliation | Complete |
-| KPI and semantic-model specification | Complete |
-| Power BI executive overview | Complete |
-| Version-controlled PBIP project | Complete |
-| Customer, product and data-quality detail pages | Specified for the next report iteration |
-| Final Power BI Desktop refresh | Complete |
+| Entendimento dos dados (Data understanding) | Completo |
+| Limpeza e validação de dados | Completo |
+| Análise de negócio com Python | Completo |
+| Reconciliação via SQL | Completo |
+| Especificação de KPI e modelo semântico | Completo |
+| Visão geral executiva no Power BI | Completo |
+| Projeto PBIP com controle de versão | Completo |
+| Páginas de detalhe: Cliente, Produto e Qualidade | Especificado para a próxima iteração |
+| Refresh final do Power BI Desktop | Completo |
 
-## Executive result
+## Resultados Executivos
 
-The analytical dataset contains completed retail sales after removing missing product descriptions, exact duplicate rows, non-positive quantities and negative unit prices.
+O dataset analítico contém vendas de varejo concluídas após a remoção de descrições ausentes, registros duplicados, quantidades não positivas e preços unitários negativos.
 
-| KPI | Verified result | Definition |
+| KPI | Resultado Verificado | Definição |
 |---|---:|---|
-| Sales | **£10,642,110.80** | Sum of `Quantity × UnitPrice` |
-| Orders | **20,134** | Distinct completed invoice numbers |
-| Identified customers | **4,339** | Distinct non-null customer IDs |
-| Products sold | **3,925** | Distinct stock codes in completed sales |
-| Average order value | **£528.56** | Sales divided by orders |
-| Countries | **38** | Distinct transaction countries |
+| **Sales (Vendas)** | **£10,642,110.80** | Soma de `Quantity × UnitPrice` |
+| **Orders (Pedidos)** | **20,134** | Contagem distinta de números de faturas concluídas |
+| **Identified customers** | **4,339** | Contagem distinta de IDs de clientes (não nulos) |
+| **Products sold** | **3,925** | Stock codes distintos em vendas concluídas |
+| **Average order value (AOV)** | **£528.56** | Receita total dividida pelo total de pedidos |
+| **Countries (Países)** | **38** | Países distintos presentes nas transações |
 
-These metrics use one consistent cleaned population of **525,460 transaction lines**. Counts from the 541,909-row source are retained only in the data-quality analysis and are not mixed with cleaned sales KPIs.
+Estas métricas utilizam uma população limpa consistente de **525.460 linhas de transação**. As contagens da fonte original (541.909 linhas) são mantidas apenas para análise de qualidade e não são misturadas aos KPIs de vendas.
 
-## Business questions
+## Perguntas de Negócio Respondidas
 
-1. How is the business performing overall?
-2. How do sales and order value change over time?
-3. Which markets contribute most revenue?
-4. Which customers generate the greatest value?
-5. Which physical products lead sales after operational charges are separated?
-6. Which source limitations affect interpretation?
+1. Qual é a performance geral do negócio em faturamento e volume?
+2. Como as vendas e o valor médio do pedido (AOV) mudam ao longo do tempo?
+3. Quais mercados (países) mais contribuem para a receita?
+4. Quais clientes geram o maior valor para a empresa?
+5. Quais produtos físicos lideram as vendas após a separação de taxas operacionais?
+6. Quais limitações da fonte de dados afetam a interpretação dos resultados?
 
-## Analytical workflow
+## Fluxo Analítico (Workflow)
 
 ```mermaid
 flowchart TD
-    A[UCI source workbook] --> B[Source and quality audit]
-    B --> C[Business-led cleaning rules]
-    C --> D[Python and SQL reconciliation]
-    D --> E[Power BI semantic model]
-    E --> F[Executive report and validation]
-```
-
-## Data-quality reconciliation
-
-| Stage | Rows | Change |
-|---|---:|---:|
-| Original source | 541,909 | — |
-| Final analytical population | 525,460 | −16,449 |
-
-The cleaning logic is intentionally conservative:
-
-- rows without a product description are excluded because they are zero-value operational records;
-- exact duplicate rows are removed;
-- negative and zero quantities are excluded from completed-sales analysis;
-- negative prices are excluded as accounting adjustments;
-- zero-price rows remain visible for quantity and quality checks but contribute £0 to sales;
-- missing customer IDs remain in sales totals but are excluded from customer-level metrics.
-
-Full definitions are available in [Data quality and scope](docs/DATA_QUALITY.md) and [Metric definitions](docs/METRIC_DEFINITIONS.md).
-
-## Important interpretation points
-
-- The source ends on **9 December 2011**. December 2011 is a partial month and must not be interpreted as a confirmed sales decline.
-- The United Kingdom contributes approximately **84.6%** of cleaned sales. International-market charts therefore exclude the UK only when their title states this explicitly.
-- `DOTCOM POSTAGE`, `POSTAGE` and `Manual` generate revenue but are operational charges, not physical products. They are separated from merchandise rankings.
-- Customer counts include only identified customers; anonymous transactions remain in company-level sales.
-
-![Validated monthly sales trend with the partial December 2011 period disclosed](images/monthly_sales_validated.png)
-
-![Top international markets by sales, explicitly excluding the United Kingdom](images/international_market_sales.png)
-
-## Power BI report design
-
-The report is specified as three connected pages:
-
-1. **Executive Overview** — sales, orders, customers, products, average order value, monthly trend and market mix.
-2. **Customer & Product Analysis** — top customers, merchandise performance, purchase frequency and order value.
-3. **Data Quality & Definitions** — source-to-cleaned reconciliation, anonymous sales, operational records and KPI definitions.
-
-The full layout, interaction and accessibility rules are documented in [Dashboard specification](docs/DASHBOARD_SPECIFICATION.md). The proposed star schema is documented in [Data model](docs/DATA_MODEL.md).
-
-## Repository structure
-
-```text
-Retail-Performance-Analytics/
-├── data/
-│   ├── raw/                  # Original UCI workbook
-│   └── processed/            # Locally generated analytical dataset
-├── docs/                     # Scope, model, metrics and dashboard specification
-├── images/                   # Reproducible documentation figures
-├── notebooks/                # Data understanding, cleaning, analysis and SQL
-├── powerbi/
-│   ├── dax/                  # Versioned measures
-│   ├── project/              # Complete PBIP report and semantic model
-│   └── theme/                # Report theme
-├── scripts/                  # Reproducible validation and documentation assets
-└── tests/                    # Metric and cleaning-rule checks
-```
-
-## Notebook roadmap
-
-| Notebook | Purpose |
-|---|---|
-| `01_Data_Understanding.ipynb` | Audit structure, completeness, cancellations and source coverage |
-| `02_Data_Cleaning.ipynb` | Apply and validate the completed-sales population |
-| `03_business_analysis.ipynb` | Answer the core sales, customer, product, market and time questions |
-| `04_SQL_Analysis.ipynb` | Reproduce the principal KPIs and rankings in SQL |
-
-## Reproduce the analysis
-
-The original workbook is sourced from the [UCI Online Retail dataset](https://archive.ics.uci.edu/dataset/352/online%2Bretail), licensed under CC BY 4.0.
-
-Run the notebooks in numerical order. Notebook 02 creates the processed CSV used by notebooks 03 and 04.
-
-```bash
-python -m pip install -r requirements.txt
-jupyter lab
-```
-
-Project validation and documentation figures can be regenerated from the command line:
-
-```bash
-python scripts/validate_retail_metrics.py
-python scripts/generate_documentation_assets.py
-python -m pytest -q
-```
-
-## Tools used
-
-Python · pandas · matplotlib · seaborn · SQLite · SQL · Power BI · Power Query · DAX · GitHub Actions
-
-## Source and license
-
-- Dataset: [UCI Online Retail](https://doi.org/10.24432/C5BW33), Daqing Chen, licensed under CC BY 4.0.
-- Project code and original documentation: [MIT License](LICENSE).
+    A[UCI source workbook] --> B[Auditoria de Fonte e Qualidade]
+    B --> C[Regras de Limpeza (Business-led)]
+    C --> D[Reconciliação Python e SQL]
+    D --> E[Modelo Semântico Power BI]
+    E --> F[Relatório Executivo e Validação]
