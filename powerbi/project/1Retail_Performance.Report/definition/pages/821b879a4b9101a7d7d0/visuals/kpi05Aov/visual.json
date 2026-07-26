@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "kpi05Aov",
+  "position": {
+    "x": 1012,
+    "y": 100,
+    "z": 7000,
+    "height": 110,
+    "width": 248,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Retail Sales"
+                    }
+                  },
+                  "Property": "Average Order Value Card"
+                }
+              },
+              "queryRef": "Retail Sales.Average Order Value Card",
+              "nativeQueryRef": "Average Order Value"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D7E7EA'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": { "expr": { "Literal": { "Value": "'Custom'" } } },
+            "position": { "expr": { "Literal": { "Value": "'Outer'" } } },
+            "color": { "solid": { "color": { "expr": { "Literal": { "Value": "'#164B57'" } } } } },
+            "transparency": { "expr": { "Literal": { "Value": "88D" } } },
+            "shadowSpread": { "expr": { "Literal": { "Value": "0D" } } },
+            "shadowBlur": { "expr": { "Literal": { "Value": "6D" } } },
+            "angle": { "expr": { "Literal": { "Value": "90D" } } },
+            "shadowDistance": { "expr": { "Literal": { "Value": "2D" } } }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
