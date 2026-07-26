@@ -118,20 +118,19 @@ Ordem	Notebook	Objetivo
 3	03_business_analysis.ipynb	Extração de insights de vendas, clientes, produtos e tempo.
 4	04_SQL_Analysis.ipynb	Auditoria Técnica: Reconciliação dos KPIs utilizando SQL.
 
-Como Reproduzir o Projeto
+## Como Reproduzir o Projeto
 Instale as dependências:
-code
-Bash
+```bash
 python -m pip install -r requirements.txt
 jupyter lab
-Execute os notebooks na ordem numérica.
+```
+## Execute os notebooks na ordem numérica.
 Para validar o projeto e gerar os ativos de documentação:
-code
-Bash
+```bash
 python scripts/validate_retail_metrics.py
 python scripts/generate_documentation_assets.py
 python -m pytest -q
-
+```
 🛠️ Ferramentas Utilizadas (Tools Used)
 Python · pandas · matplotlib · seaborn · SQLite · SQL · Power BI · Power Query · DAX · GitHub Actions
 
