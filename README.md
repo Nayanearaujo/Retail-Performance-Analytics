@@ -128,6 +128,8 @@ Visão consolidada para consumo executivo: faturamento, volume, ticket médio, d
 | Gráfico Temporal | `Monthly Sales` | `CALCULATE([Total Sales], DATESMTD(dim_date[Date]))` |
 | Mapa por País | `Sales by Country` | `CALCULATE([Total Sales], ALLEXCEPT(dim_country, dim_country[Country]))` |
 
+![Executive Overview — Faturamento, tendência mensal e mapa geográfico](images/overview.png)
+
 ### Página 2 — Análise de Clientes e Produtos
 
 Curva de Pareto por receita, LTV por cliente e giro de SKUs. O Reino Unido é tratado separadamente nos filtros de mercado geográfico.
@@ -141,6 +143,8 @@ Curva de Pareto por receita, LTV por cliente e giro de SKUs. O Reino Unido é tr
 | Faturamento Ex-UK | `Sales Ex-UK` | `CALCULATE([Total Sales], dim_country[Country] <> "United Kingdom")` |
 | Share Internacional | `International Share` | `DIVIDE([Sales Ex-UK], [Total Sales])` |
 
+![Análise de Clientes e Produtos — Curva de Pareto e ranking por LTV](images/customers.png)
+
 ### Página 3 — Qualidade e Integridade de Dados
 
 Painel de transparência técnica. Mostra a reconciliação entre Python, SQL e Power BI, com o delta de cada camada exibido como visual de auditoria.
@@ -152,6 +156,8 @@ Painel de transparência técnica. Mostra a reconciliação entre Python, SQL e 
 | Receita Anônima | `Anonymous Sales` | `CALCULATE([Total Sales], ISBLANK(dim_customer[CustomerID]))` |
 | Delta Reconciliação | `SQL vs Python Delta` | Diferença entre soma Python e consulta SQL — target: £0,00 |
 | Crescimento YoY | `YoY Sales Growth` | `DIVIDE([Total Sales] - [LY Sales], [LY Sales])` |
+
+![Qualidade e Integridade de Dados — Reconciliação £0,00 entre Python, DuckDB, SQLite e BigQuery](images/quality.png)
 
 ### Como Abrir e Atualizar o Dashboard
 
