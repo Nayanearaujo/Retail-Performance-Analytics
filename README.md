@@ -1,12 +1,15 @@
 # Retail Performance Analytics: Da Transação ao Insight Executivo
 
-**Case de Analytics Engineering que transforma dados transacionais brutos em performance estratégica auditada, com reconciliação ponta a ponta entre Python, SQL e Power BI.**
+**Case de Analytics Engineering com reconciliação ponta a ponta entre Python, SQL, BigQuery, DuckDB e Power BI — os mesmos £10.642.110,80 de faturamento validados em quatro camadas independentes.**
 
-O projeto analisa o dataset *UCI Online Retail* cobrindo o ciclo completo de dados: diagnóstico de qualidade da fonte, higienização orientada a regras de negócio, reconciliação de KPIs entre camadas, análise de LTV e mix de produtos, modelagem dimensional Star Schema e dashboard executivo em Power BI com medidas DAX versionadas.
+O projeto analisa o dataset *UCI Online Retail* cobrindo o ciclo completo: diagnóstico de qualidade da fonte, higienização orientada a regras de negócio, reconciliação de KPIs entre camadas, análise de LTV e mix de produtos, modelagem dimensional Star Schema e dashboards executivos em Power BI e Looker Studio.
 
 ---
 
 [![Power BI](https://img.shields.io/badge/Power_BI-Dashboard_Executivo-F2C811?logo=powerbi&logoColor=black)](powerbi/project/)
+[![Looker Studio](https://img.shields.io/badge/Looker_Studio-Painel_Web-4285F4?logo=googleanalytics&logoColor=white)](https://lookerstudio.google.com/)
+[![BigQuery](https://img.shields.io/badge/BigQuery-Data_Warehouse-4285F4?logo=googlebigquery&logoColor=white)](https://cloud.google.com/bigquery)
+[![DuckDB](https://img.shields.io/badge/DuckDB-Analytical_Queries-FDD835?logo=duckdb&logoColor=black)](https://duckdb.org/)
 [![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
 [![SQL](https://img.shields.io/badge/SQL-SQLite-lightgrey?logo=sqlite)](https://www.sqlite.org/)
 [![Pytest](https://img.shields.io/badge/Pytest-Integrity_Checks-green?logo=pytest)](https://docs.pytest.org/)
@@ -15,7 +18,7 @@ O projeto analisa o dataset *UCI Online Retail* cobrindo o ciclo completo de dad
 
 ## Resultados Auditados
 
-Todos os números abaixo partem da base higienizada de **525.460 linhas**. O volume original da fonte (541.909) é mantido separado para fins de auditoria de qualidade.
+Base higienizada de **525.460 linhas**. O volume original (541.909) é mantido separado para fins de auditoria. Todos os KPIs foram reconciliados em Python, SQL (SQLite + BigQuery) e Power BI — os valores abaixo fecham nas quatro ferramentas.
 
 | KPI | Resultado | Definição |
 |---|---:|---|
@@ -28,13 +31,16 @@ Todos os números abaixo partem da base higienizada de **525.460 linhas**. O vol
 
 ---
 
-## Tech Stack
+## Stack Técnico
 
-| Camada | Tecnologia | Aplicação |
+| Camada | Tecnologia | Função no Projeto |
 |---|---|---|
-| ETL e EDA | Python (Pandas, Matplotlib, Seaborn) | Higienização, exploração e extração de insights |
-| Auditoria | SQL (SQLite) | Reconciliação de faturamento e validação de lógica |
-| BI | Power BI (DAX, Star Schema, PBIP) | Modelagem dimensional, cálculos de tempo e UX executivo |
+| Extração e EDA | Python (Pandas, Matplotlib, Seaborn) | ETL, higienização por regras de negócio, análise exploratória |
+| Consultas Analíticas Leves | DuckDB | Queries SQL direto no Parquet sem servidor externo |
+| Auditoria Local | SQL (SQLite) | Reconciliação de faturamento e validação de lógica de négócio |
+| Data Warehouse | BigQuery | Modelo dimensional carregado na nuvem, fonte única de verdade |
+| BI Corporativo | Power BI (DAX, Star Schema, PBIP) | Relatório executivo com inteligência de tempo, versionado via Git |
+| BI Web Público | Looker Studio | Painel publicado na web, conectado ao BigQuery, sem instalação |
 | Governança | Documentação de linhagem | Dicionário de medidas, scripts de auditoria, versionamento PBIP |
 
 ---
@@ -46,9 +52,11 @@ Todos os números abaixo partem da base higienizada de **525.460 linhas**. O vol
 | Mapeamento e Diagnóstico de Dados | Completo |
 | Higienização e Saneamento da Base | Completo |
 | Análise de Negócio (Python) | Completo |
-| Reconciliação e Auditoria de Métricas (SQL) | Completo |
+| Consultas Analíticas com DuckDB | Completo |
+| Reconciliação Python vs SQL vs BigQuery | Completo |
 | Modelagem Semântica e Especificação de KPIs | Completo |
-| Dashboard Executivo (Overview) | Completo |
+| Dashboard Executivo Power BI (3 páginas) | Completo |
+| Painel Looker Studio (Web) | Completo |
 | Versionamento PBIP | Completo |
 | Homologação Final (Power BI Desktop) | Completo |
 | Deep Dive: Clientes, Produtos e Qualidade | Próxima Iteração |
@@ -61,10 +69,28 @@ Todos os números abaixo partem da base higienizada de **525.460 linhas**. O vol
 flowchart TD
     A[Dataset Original — UCI Online Retail] --> B[Diagnóstico de Qualidade e Gaps]
     B --> C[Higienização por Regras de Negócio]
-    C --> D[Reconciliação Python vs SQL]
-    D --> E[Modelagem Star Schema]
-    E --> F[Dashboard Executivo Power BI]
+    C --> D1[DuckDB — Queries Analíticas Locais]
+    C --> D2[SQLite — Reconciliação Local]
+    D1 --> E[BigQuery — Data Warehouse na Nuvem]
+    D2 --> E
+    E --> F1[Power BI — Dashboard Executivo]
+    E --> F2[Looker Studio — Painel Web Público]
 ```
+
+---
+
+## Reconciliação Entre Camadas
+
+O ponto de diferenciação técnico do projeto: o mesmo KPI de faturamento foi calculado de forma independente em quatro ambientes e o delta final em todas as comparações foi **£0,00**.
+
+| Camada | Faturamento Calculado | Delta vs Python |
+|---|---:|---:|
+| Python (Pandas) | £10.642.110,80 | — |
+| DuckDB (Parquet) | £10.642.110,80 | £0,00 |
+| SQL (SQLite) | £10.642.110,80 | £0,00 |
+| BigQuery (Data Warehouse) | £10.642.110,80 | £0,00 |
+
+Essa reconciliação elimina o risco de divergência entre o dado apresentado em dashboard e o dado real de negócio.
 
 ---
 
@@ -87,11 +113,11 @@ A régua de higienização foi conservadora para garantir o rigor das métricas 
 
 ## Dashboard Executivo Power BI
 
-O arquivo do projeto está em `powerbi/project/` no formato **PBIP** (Power BI Project), compatível com versionamento Git. Para abrir, instale o Power BI Desktop e clique no arquivo `.pbip`.
+O arquivo está em `powerbi/project/` no formato **PBIP** (Power BI Project), compatível com versionamento Git. Para abrir, instale o Power BI Desktop e clique no arquivo `.pbip`. O modelo usa Star Schema com tabelas `fact_sales`, `dim_customer`, `dim_product`, `dim_date` e `dim_country`.
 
 ### Página 1 — Executive Overview
 
-Visão consolidada do negócio: faturamento, volume, ticket médio, mix de mercado e tendência temporal.
+Visão consolidada para consumo executivo: faturamento, volume, ticket médio, distribuição geográfica e tendência mensal.
 
 | Visual | Medida DAX | Lógica |
 |---|---|---|
@@ -104,36 +130,28 @@ Visão consolidada do negócio: faturamento, volume, ticket médio, mix de merca
 
 ### Página 2 — Análise de Clientes e Produtos
 
-Ranking de Pareto por receita, LTV por cliente e giro de SKUs.
+Curva de Pareto por receita, LTV por cliente e giro de SKUs. O Reino Unido é tratado separadamente nos filtros de mercado geográfico.
 
 | Visual | Medida DAX | Lógica |
 |---|---|---|
 | Top 10 Clientes | `Customer LTV` | `CALCULATE([Total Sales], ALLEXCEPT(dim_customer, dim_customer[CustomerID]))` |
 | Curva ABC de Produtos | `Product Revenue Share` | `DIVIDE([Total Sales], CALCULATE([Total Sales], ALL(dim_product)))` |
 | Acumulado Pareto | `Cumulative Share` | `CALCULATE([Product Revenue Share], FILTER(ALLSELECTED(dim_product), [Total Sales] >= EARLIER([Total Sales])))` |
-| Frequência Média de Compra | `Avg Purchase Frequency` | `DIVIDE([Total Orders], [Active Customers])` |
-
-### Página 3 — Performance por País e Período
-
-Mercados internacionais analisados em escala separada do Reino Unido, com comparativo YoY.
-
-| Visual | Medida DAX | Lógica |
-|---|---|---|
+| Frequência de Compra | `Avg Purchase Frequency` | `DIVIDE([Total Orders], [Active Customers])` |
 | Faturamento Ex-UK | `Sales Ex-UK` | `CALCULATE([Total Sales], dim_country[Country] <> "United Kingdom")` |
 | Share Internacional | `International Share` | `DIVIDE([Sales Ex-UK], [Total Sales])` |
-| Crescimento YoY | `YoY Sales Growth` | `DIVIDE([Total Sales] - [LY Sales], [LY Sales])` |
-| Ano Anterior | `LY Sales` | `CALCULATE([Total Sales], SAMEPERIODLASTYEAR(dim_date[Date]))` |
 
-### Página 4 — Qualidade e Integridade de Dados
+### Página 3 — Qualidade e Integridade de Dados
 
-Painel de transparência técnica com reconciliação ponta a ponta entre Python, SQL e Power BI.
+Painel de transparência técnica. Mostra a reconciliação entre Python, SQL e Power BI, com o delta de cada camada exibido como visual de auditoria.
 
 | Visual | Medida DAX | Lógica |
 |---|---|---|
 | Linhas Removidas | Estático | 16.449 (calculado no ETL Python) |
 | Taxa de Aproveitamento | `Data Yield` | `DIVIDE(525460, 541909)` = 96,96% |
 | Receita Anônima | `Anonymous Sales` | `CALCULATE([Total Sales], ISBLANK(dim_customer[CustomerID]))` |
-| Delta Reconciliação | `SQL vs Python Delta` | Diferença entre a soma Python e a consulta SQL auditada — target: £0 |
+| Delta Reconciliação | `SQL vs Python Delta` | Diferença entre soma Python e consulta SQL — target: £0,00 |
+| Crescimento YoY | `YoY Sales Growth` | `DIVIDE([Total Sales] - [LY Sales], [LY Sales])` |
 
 ### Como Abrir e Atualizar o Dashboard
 
@@ -146,21 +164,30 @@ pip install -r requirements.txt
 jupyter nbconvert --to notebook --execute notebooks/01_Data_Understanding.ipynb
 jupyter nbconvert --to notebook --execute notebooks/02_Data_Cleaning.ipynb
 
-# 3. Abra o Power BI Desktop e navegue até powerbi/project/
-# Clique no arquivo .pbip para abrir o projeto
+# 3. Abra o Power BI Desktop, navegue até powerbi/project/ e clique no .pbip
 
-# 4. Clique em "Atualizar" no Power BI Desktop para reprocessar os dados
+# 4. Clique em "Atualizar" para reprocessar os dados com a base local
 ```
 
 > O modelo usa caminhos relativos. Mantenha a estrutura de pastas do repositório para que a atualização funcione sem reconfiguração manual.
 
 ---
 
+## Painel Looker Studio (Web)
+
+Versão pública do relatório executivo, conectada diretamente ao BigQuery. Acessível via browser, sem necessidade de instalação de software.
+
+- **Fonte de dados:** tabela `fact_sales` no BigQuery, particionada por mês de fatura
+- **Atualização:** automática ao recarregar a página, refletindo qualquer nova carga no BigQuery
+- **Páginas disponíveis:** Faturamento por Período, Top Países (Ex-UK), Top Produtos e Clientes
+
+---
+
 ## Insights de Interpretação
 
-- **Efeito Sazonal (Dez/2011):** A base encerra em 09/12/2011. Dezembro aparece como mês parcial e não representa queda de faturamento — é corte de fonte, não perda de tração. O dashboard sinaliza isso explicitamente com anotação no gráfico temporal.
-- **Concentração UK:** O Reino Unido representa aproximadamente 84,6% do faturamento total. Os mercados internacionais são analisados em escala separada para evitar distorção visual nos rankings.
-- **Receita Operacional:** Taxas de frete (`POSTAGE`) e ajustes manuais geram receita contábil, mas não são produtos. Foram isolados para não contaminar o ranking de performance de mercadorias.
+- **Efeito Sazonal (Dez/2011):** A base encerra em 09/12/2011. Dezembro aparece como mês parcial e não representa queda de faturamento — é corte de fonte, não perda de tração. O dashboard sinaliza isso com anotação direta no gráfico temporal.
+- **Concentração UK:** O Reino Unido representa 84,6% do faturamento. Os mercados internacionais são analisados em escala separada para evitar distorção visual nos rankings.
+- **Receita Operacional:** Taxas de frete (`POSTAGE`) e ajustes manuais geram receita contábil mas não são produtos. Foram isolados para não contaminar o ranking de performance de mercadorias.
 
 ![Tendência mensal de vendas com o período parcial de dezembro/2011 sinalizado](images/monthly_sales_validated.png)
 
@@ -218,7 +245,7 @@ python -m pytest -q
 
 ## Ferramentas
 
-Python · Pandas · Matplotlib · Seaborn · SQLite · SQL · Power BI · Power Query · DAX · GitHub
+Python · Pandas · Matplotlib · Seaborn · DuckDB · SQLite · SQL · BigQuery · Looker Studio · Power BI · Power Query · DAX · GitHub
 
 ---
 
