@@ -1,0 +1,22 @@
+{
+  "id": "retail-performance-analytics",
+  "name": "Retail Performance Analytics",
+  "pages": [
+    {
+      "name": "Executive Overview",
+      "displayName": "Executive Overview",
+      "description": "Faturamento, volume, ticket médio, tendência mensal e distribuição geográfica. Base: 525.460 linhas higienizadas."
+    },
+    {
+      "name": "Clientes e Produtos",
+      "displayName": "Análise de Clientes e Produtos",
+      "description": "Curva de Pareto por receita, LTV por cliente (top: CustomerID 14646), giro de 3.925 SKUs."
+    },
+    {
+      "name": "Qualidade",
+      "displayName": "Qualidade e Integridade de Dados",
+      "description": "Reconciliação Python vs DuckDB vs SQLite vs BigQuery. Delta: £0,00 em todas as camadas."
+    }
+  ],
+  "dataSource": "data/processed/retail_clean.parquet"
+}
