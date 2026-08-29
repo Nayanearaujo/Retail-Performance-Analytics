@@ -1,0 +1,94 @@
+{
+  "measures": [
+    {
+      "name": "Total Sales",
+      "expression": "SUMX(fact_sales, fact_sales[Quantity] * fact_sales[UnitPrice])",
+      "formatString": "£#,##0.00",
+      "page": "All"
+    },
+    {
+      "name": "Total Orders",
+      "expression": "DISTINCTCOUNT(fact_sales[InvoiceNo])",
+      "formatString": "#,##0",
+      "page": "All"
+    },
+    {
+      "name": "AOV",
+      "expression": "DIVIDE([Total Sales], [Total Orders])",
+      "formatString": "£#,##0.00",
+      "page": "All"
+    },
+    {
+      "name": "Active Customers",
+      "expression": "DISTINCTCOUNT(fact_sales[CustomerID])",
+      "formatString": "#,##0",
+      "page": "All"
+    },
+    {
+      "name": "Monthly Sales",
+      "expression": "CALCULATE([Total Sales], DATESMTD(dim_date[Date]))",
+      "formatString": "£#,##0.00",
+      "page": "Executive Overview"
+    },
+    {
+      "name": "Sales by Country",
+      "expression": "CALCULATE([Total Sales], ALLEXCEPT(dim_country, dim_country[Country]))",
+      "formatString": "£#,##0.00",
+      "page": "Executive Overview"
+    },
+    {
+      "name": "Customer LTV",
+      "expression": "CALCULATE([Total Sales], ALLEXCEPT(dim_customer, dim_customer[CustomerID]))",
+      "formatString": "£#,##0.00",
+      "page": "Clientes e Produtos"
+    },
+    {
+      "name": "Product Revenue Share",
+      "expression": "DIVIDE([Total Sales], CALCULATE([Total Sales], ALL(dim_product)))",
+      "formatString": "0.00%",
+      "page": "Clientes e Produtos"
+    },
+    {
+      "name": "Cumulative Share",
+      "expression": "CALCULATE([Product Revenue Share], FILTER(ALLSELECTED(dim_product), [Total Sales] >= EARLIER([Total Sales])))",
+      "formatString": "0.00%",
+      "page": "Clientes e Produtos"
+    },
+    {
+      "name": "Sales Ex-UK",
+      "expression": "CALCULATE([Total Sales], dim_country[Country] <> \"United Kingdom\")",
+      "formatString": "£#,##0.00",
+      "page": "Clientes e Produtos"
+    },
+    {
+      "name": "International Share",
+      "expression": "DIVIDE([Sales Ex-UK], [Total Sales])",
+      "formatString": "0.00%",
+      "page": "Clientes e Produtos"
+    },
+    {
+      "name": "Data Yield",
+      "expression": "DIVIDE(525460, 541909)",
+      "formatString": "0.00%",
+      "page": "Qualidade"
+    },
+    {
+      "name": "Anonymous Sales",
+      "expression": "CALCULATE([Total Sales], ISBLANK(dim_customer[CustomerID]))",
+      "formatString": "£#,##0.00",
+      "page": "Qualidade"
+    },
+    {
+      "name": "LY Sales",
+      "expression": "CALCULATE([Total Sales], SAMEPERIODLASTYEAR(dim_date[Date]))",
+      "formatString": "£#,##0.00",
+      "page": "All"
+    },
+    {
+      "name": "YoY Sales Growth",
+      "expression": "DIVIDE([Total Sales] - [LY Sales], [LY Sales])",
+      "formatString": "0.00%",
+      "page": "All"
+    }
+  ]
+}
